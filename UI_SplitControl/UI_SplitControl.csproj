@@ -31,7 +31,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ico.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DB.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,14 +51,81 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AppSetting.cs" />
+    <Compile Include="BLL\Card.cs" />
+    <Compile Include="BLL\ICard.cs" />
+    <Compile Include="BLL\ItemClsBLL.cs" />
+    <Compile Include="BLL\SupVipBLL.cs" />
+    <Compile Include="BLL\SysBLL.cs" />
+    <Compile Include="cons\ImgLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cons\MyPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cons\UIFromTop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cons\UIFromTop.designer.cs">
+      <DependentUpon>UIFromTop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extension\ConvExtension.cs" />
+    <Compile Include="Extension\IvyException.cs" />
+    <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSettings.designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSuperVip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSuperVip.designer.cs">
+      <DependentUpon>frmSuperVip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIndex.designer.cs">
+      <DependentUpon>frmIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\DrawHelper.cs" />
+    <Compile Include="Helper\InI.cs" />
+    <Compile Include="Helper\Log.cs" />
+    <Compile Include="Helper\sec.cs" />
+    <Compile Include="Model\pos_t_supervip_flow.cs" />
+    <Compile Include="Model\pos_t_supervip_rejectclass.cs" />
+    <Compile Include="Model\sa_t_operator_i.cs" />
+    <Compile Include="Model\sys_t_system.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="cons\ImgLabel.resx">
+      <DependentUpon>ImgLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cons\MyPanel.resx">
+      <DependentUpon>MyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cons\UIFromTop.resx">
+      <DependentUpon>UIFromTop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSuperVip.resx">
+      <DependentUpon>frmSuperVip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIndex.resx">
+      <DependentUpon>frmIndex.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -60,7 +134,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="lib\IVYGetValue.ini" />
+    <None Include="lib\IVYMain.ini" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -71,5 +148,44 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\超级会员.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\窗口_关闭-20-灰色.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\登录.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\横LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\密码.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\设置.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\退出.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\用户.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\帐户.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ico.ico" />
+    <Content Include="lib\DB.dll" />
+    <Content Include="lib\IVYGetValue.dll" />
+    <Content Include="lib\mwrf32.dll" />
+    <Content Include="lib\SQLite.Interop.dll" />
+    <Content Include="lib\System.Data.SQLite.dll" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /e /r /y $(ProjectDir)lib $(ProjectDir)$(OutDir)</PreBuildEvent>
+  </PropertyGroup>
 </Project>
